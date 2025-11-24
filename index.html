@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikaela Kaiser — Blue Lock</title>
+
+<style>
+/* ------------------------- RESET ------------------------- */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ------------------------- COLORES ------------------------- */
+:root{
+  --azul: #00c8ff;
+  --azul-neon: #00eaff;
+  --azul-oscuro: #00111a;
+  --negro: #000000;
+  --blanco: #ffffff;
+}
+
+/* ------------------------- BODY ------------------------- */
+body{
+  background: var(--negro);
+  overflow-x:hidden;
+  color:white;
+}
+
+/* ------------------------- VIDEO DE FONDO ------------------------- */
+#video-fondo{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-10;
+  filter: brightness(0.35) saturate(1.3) drop-shadow(0 0 30px var(--azul-neon));
+}
+
+/* ------------------------- LOADING SCREEN ------------------------- */
+#loader{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+.loader-bar{
+  width:70%;
+  height:12px;
+  border-radius:20px;
+  background:#0d0d0d;
+  overflow:hidden;
+  box-shadow:0 0 20px var(--azul-neon);
+}
+
+.loader-fill{
+  height:100%;
+  width:0%;
+  background:var(--azul-neon);
+  box-shadow:0 0 15px var(--azul-neon);
+  animation: load 4s linear forwards;
+}
+
+@keyframes load{
+  from{width:0%;}
+  to{width:100%;}
+}
+
+#loader-text{
+  margin-top:20px;
+  font-size:1.3rem;
+  letter-spacing:3px;
+  color:var(--azul-neon);
+  text-shadow:0 0 10px var(--azul-neon);
+}
+
+/* Hide after load */
+.hide{
+  opacity:0;
+  pointer-events:none;
+  transition:1s ease;
+}
+
+/* ------------------------- CONTENEDOR PRINCIPAL ------------------------- */
+.main{
+  padding:40px 20px;
+  animation: fadeIn 2s ease forwards;
+  opacity:0;
+}
+@keyframes fadeIn{
+  to{opacity:1;}
+}
+
+/* TÍTULO SUPER ÉPICO */
+.titulo-principal{
+  text-align:center;
+  font-size:2.2rem;
+  color:var(--azul-neon);
+  text-shadow:0 0 20px var(--azul-neon);
+  margin-bottom:25px;
+  transform: perspective(500px) rotateX(15deg);
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(0) perspective(500px) rotateX(15deg);}
+  50%{transform:translateY(-10px) perspective(500px) rotateX(15deg);}
+  100%{transform:translateY(0) perspective(500px) rotateX(15deg);}
+}
+
+/* ------------------------- NUEVA FICHA MIKAELA ------------------------- */
+.ficha{
+  max-width:900px;
+  margin:auto;
+}
+
+/* --- Super ficha mejorada --- */
+.ficha-mikaela{
+  max-width:1000px;
+  padding:35px;
+  background:linear-gradient(135deg, rgba(0,30,50,0.75), rgba(0,0,0,0.7));
+  border:3px solid var(--azul-neon);
+  box-shadow:0 0 40px var(--azul-neon), inset 0 0 25px var(--azul-neon);
+  border-radius:22px;
+  text-align:center;
+  backdrop-filter:blur(6px);
+  transform: perspective(600px) rotateX(8deg);
+  transition:0.5s;
+}
+
+.ficha-mikaela:hover{
+  transform: perspective(600px) rotateX(0deg) scale(1.03);
+  box-shadow:0 0 55px var(--azul-neon), inset 0 0 35px var(--azul-neon);
+}
+
+.marco-img-neo{
+  width:70%;
+  aspect-ratio:1/1;
+  border-radius:14px;
+  border:3px solid var(--azul-neon);
+  box-shadow:0 0 35px var(--azul-neon), inset 0 0 20px var(--azul);
+  margin-bottom:20px;
+  object-fit:cover;
+}
+
+.ficha-contenido{
+  padding:10px;
+}
+
+.texto-mikaela{
+  color:var(--azul-neon);
+  text-shadow:
+    0 0 10px var(--azul-neon),
+    0 0 20px var(--azul-neon),
+    0 0 35px var(--azul-neon);
+  font-size:1.25rem;
+  font-weight:600;
+  white-space:pre-wrap;
+  line-height:1.75;
+  letter-spacing:1px;
+  text-align:center;
+  animation: brilloNeon 4s infinite ease-in-out;
+}
+
+@keyframes brilloNeon{
+  0%{ text-shadow:0 0 15px var(--azul-neon); }
+  50%{ text-shadow:0 0 35px var(--azul-neon); }
+  100%{ text-shadow:0 0 15px var(--azul-neon); }
+}
+
+/* ------------------------- COLUMNAS ------------------------- */
+.columnas{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+  gap:25px;
+  margin-top:40px;
+}
+
+.col{
+  background:rgba(0,0,0,0.55);
+  padding:20px;
+  border:2px solid var(--azul);
+  box-shadow:0 0 20px var(--azul);
+  border-radius:15px;
+  text-align:center;
+  animation: colAnim 2s ease;
+}
+
+@keyframes colAnim{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.marco-img{
+  width:60%;
+  aspect-ratio:1/1;
+  border:2px solid var(--azul-neon);
+  box-shadow:0 0 25px var(--azul-neon);
+  border-radius:12px;
+  margin-bottom:15px;
+  background:#001827;
+  object-fit:cover;
+}
+
+.col p {
+    white-space: pre-wrap;
+}
+
+
+/* ------------------------- TEXTO LARGO ------------------------- */
+.texto-largo{
+  margin-top:40px;
+  padding:35px;
+  background:rgba(0,0,0,0.6);
+  border:2px solid var(--azul-neon);
+  border-radius:15px;
+  max-width:950px;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow:0 0 25px var(--azul-neon);
+  white-space:pre-wrap;
+  font-size:1rem;
+  line-height:1.5;
+}
+
+/* ------------------------- RESPONSIVE ------------------------- */
+@media(max-width:700px){
+  .titulo-principal{font-size:1.6rem;}
+  .texto-mikaela{font-size:1.05rem;}
+  .marco-img-neo{width:85%;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- VIDEO DE FONDO -->
+<video id="video-fondo" autoplay loop muted playsinline>
+  <source src="video.mp4" type="video/mp4">
+</video>
+
+<!-- LOADING -->
+<div id="loader">
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div id="loader-text">CARGANDO...</div>
+</div>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="main" id="contenido">
+
+  <h1 class="titulo-principal">𝄖 ｡   #𝘽𝙇𝙐𝙀 𝙇𝙊𝘾𝙆 𝙋𝙍𝙊𝙅𝙀𝘾𝙏</h1>
+
+  <!-- FICHA REDISEÑADA -->
+  <div class="ficha ficha-mikaela">
+
+<div class="ficha-contenido">
+
+<pre class="texto-mikaela">
+
+      ‎‎‎‎‎‎‎‎‎‎‎‎‎‎‎           ‎ᯓ⚽︎ 𝙎𝙏𝘼𝙏𝙎 ㈱꯭ 
+      <img src="mikaela.jpg" class="marco-img-neo">             
+⟢ 𝙉𝙤𝙢𝙗𝙧𝙚: Mikaela Kaiser
+⟢ 𝙀𝙙𝙖𝙙: 19 años
+────────────────────────
+⟬ 𝟑𝟐𝟓 𝐩𝐮𝐧𝐭𝐨𝐬 𝐚 𝐫𝐞𝐩𝐚𝐫𝐭𝐢𝐫 — 𝐦𝐚́𝐱. 𝟏𝟓𝟎 𝐩𝐨𝐫 𝐬𝐭𝐚𝐭 ⟭
+        ⟬ 𝐏𝐮𝐧𝐭𝐨𝐬 𝐞𝐱𝐭𝐫𝐚: 𝟎𝟎 ⟭
+──────────────────────
+
+• 𝙋𝙖𝙨𝙚:【 55+5+8+5 = 73】
+• 𝙏𝙞𝙧𝙤: 【 60+5+8+20+15 = 108】
+• 𝙁𝙞́𝙨𝙞𝙘𝙤:【 55+5+8+11 = 79】
+• 𝙍𝙚𝙜𝙖𝙩𝙚:【 55+5+8+12 = 80】
+• 𝘿𝙚𝙛𝙚𝙣𝙨𝙖:【 50+5+8+7 = 70】
+• 𝙑𝙚𝙡𝙤𝙘𝙞𝙙𝙖𝙙:【 50+5+8+18 =  81】
+
+</pre>
+
+</div>
+
+  </div>
+
+  <!-- COLUMNAS -->
+  <div class="columnas">
+    <div class="col">
+      <img src="shidou.jpg" class="marco-img">
+      <h3>Shidou Ryusei sub20</h3>
+      <p>Técnica superior de Ryusei Shidou
+
+Legendario
+Estilo de Tiro
+
+Para ti el fútbol no es un deporte, sino una forma de dejar tu existencia grabada marcando gol tras gol. Eres un cazador experto dentro del área. Cuando entras al área chica obtienes +8 en todas las estadísticas. Tus tiros son letales e impredecibles, reduciendo -8 puntos las chances del portero de atajar. Tu Tiro aumenta +20, y si recibes un pase exitoso antes del remate y la volea es inmediata, sumas +6 más y reduces 25% la defensa de interceptores.
+Tu rango de tiro es eficaz hasta 23 metros. Puedes rematar de cabeza hasta 16 metros sin reducción.
+Cada vez que derrotas a un oponente en duelo físico obtienes +4 acumulables hasta 16.
+Tu velocidad aumenta +18 para cazar goles.
+Si juegas con un usuario de la pasiva Técnica futbolística superior del prodigio analítico Sae Itoshi tus tiros se potencian un 8%.
+
+Giro endemoniado
+
+Los simplones necesitan mirar la portería. Vos no. Siempre sabés dónde está. Esta habilidad se redacta fuera de tu turno por un aliado. Te permite superar una marca con un giro inesperado que deriva en un tiro impredecible. Las pasivas con meta visión imperfecta no pueden leerlo. Si quieren intervenir deben someterse a velocidad vs tiro con -15%. Si hay marcaje intenso se genera ruleta de físico.
+
+Ejecución:
+Un aliado debe redactar tu situación y la marca rival. Debe mencionarse Giro endemoniado. Cooldown 5 turnos.
+
+Dragon Drive
+
+Tirar desde cualquier posición es tu especialidad. Esta volea aérea envía el balón con trayectoria descendente. Quien intente intervenir debe someterse a velocidad vs tiro y si intenta bloquear trayecto es tiro vs defensa con -15% ambas estadísticas.
+
+Ejecución:
+Debe estar en el aire y referenciar Dragon Drive. Cooldown 6 turnos.
+
+Movimiento especial en estado de flujo
+BIG BANG DRIVE
+
+Un gol nunca está perdido. Ejecución de un tiro desde media distancia sin reducción por distancia. Después de mitad de cancha solo reduce 37% en lugar de 50%.
+Dentro de 26 metros reduce 35% la defensa de interceptores y -5 puntos en ruleta de gol.
+
+Ejecución:
+El balón debe estar en el aire. Debe mencionarse Big Bang Drive. Cooldown 8 turnos.</p>
+    </div>
+
+    <div class="col">
+      <img src="rin.jpg" class="marco-img">
+      <h3>Rin Itoshi sub20</h3>
+      <p>Estilo del Marionetista Itoshi Rin
+
+Legendario
+
+Pasiva de Estilo
+
+No naciste siendo un prodigio, pero te forjaste como uno. No fue la gloria lo que te empujó hacia adelante, sino la herida abierta de una traición. Una promesa rota, un hermano ausente, un vacío que llenaste con odio. No juegas por amor al balón, sino por la necesidad de demostrar que nadie puede escapar de tu sombra. Tu existencia entera es una declaración de guerra silenciosa. No buscas competir, buscas dominar.
+Tu estilo no persigue la armonía ni la inspiración. Es una red de trampas tejida con cálculo quirúrgico. Te mueves como si vieras el futuro, y quienes te rodean, aliados o enemigos, actúan sin saber que ya los habías condicionado. Tu control del campo es psicológico, invisible y constante. Incluso cuando no tocas el balón, estás dirigiendo la jugada, lo que te permite obligar a tus compañeros a utilizar sus habilidades y armas cuando lo requieres.
+
+Tu disparo es tu firma. No solo por la potencia o la precisión, sino por su diseño impredecible. Los tiros con curva que ejecutas parecen desobedecer la física, ya sea con interior o exterior, apareciendo tarde, torcidos, letales. La ambidiestria se convierte en otra capa de tu engaño. Y cuando golpeas con el exterior del pie, es como si deformaras el espacio entre el balón y la red. Por eso recibes un +15 en Tiro, reflejando tu capacidad para cerrar jugadas con frialdad quirúrgica desde cualquier ángulo, con cualquier pierna.
+
+Tu forma de leer el juego es tu mayor don oculto. Como una computadora humana, reconoces patrones, absorbes datos y anticipas errores. Tus ojos no siguen el balón: lo preceden. Gracias a tu Conciencia Espacial Avanzada, obtienes +5 puntos a todas tus estadísticas, porque incluso tus movimientos sin balón están cargados de intención, cálculo y presión.
+
+El cuerpo que acompaña tu mente ha sido afinado para resistir, no para brillar. Has aprendido a soportar empujones, a ganar duelos, a absorber contacto sin perder el equilibrio. Esa dureza mental se refleja en lo físico y te otorga un +11 en Físico. No eres el más fuerte, pero es difícil derribarte. Incluso más difícil superarte.
+
+En cuanto a Regate, tu estilo no necesita florituras. No bailas, amputas. Tus amagues son secos, breves, casi imperceptibles y por eso imposibles de leer. El rival no puede reaccionar a lo que apenas ve. Por eso sumas +12 en Regate, convirtiéndote en una amenaza directa.
+
+Tu +7 en Defensa no te convierte en un ancla, pero sí en un cortocircuito. Sabes cerrar líneas, interceptar sin ensuciar y leer cuándo detener una jugada antes de que nazca. No te defines como defensor, pero si el enemigo entra en tu zona, sufre el mismo control que ejerces en ataque.
+Tu Velocidad (+8) no rompe cronómetros, pero tu capacidad de anticiparte te permite llegar antes. Corres lo justo y en el momento exacto.
+
+Tu Pase, aunque modesto, es letal en precisión. No construyes jugadas largas, ejecutas una sola línea perfecta en el momento final. El pase no busca mantener posesión, sino asegurar tu disparo. Eso te aumenta +5 en Pase.
+
+Control del Marionetista
+
+Tu estilo no persigue la armonía ni la inspiración. Es una red de trampas tejida con cálculo quirúrgico. Te mueves como si vieras el futuro, y quienes te rodean actúan condicionados sin saberlo. Tu control es psicológico, invisible y constante. Incluso sin tocar el balón, diriges la jugada y puedes obligar a tus aliados a usar sus habilidades cuando lo necesitas.
+
+Durante un tiempo limitado activas un estilo lleno de hilos invisibles, una manifestación absoluta de tu control mental. No es magia ni carisma. Es miedo, precisión y presencia. Cuando esta habilidad entra en efecto, todo se vuelve más lento para los demás. Tus aliados siguen tus ideas sin darse cuenta. Tus enemigos se alinean contigo sin poder evitarlo. El campo se convierte en una jaula que solo vos ves.
+
+Si un aliado está dentro de tu rango de presión, aproximadamente 25 metros, sus decisiones ofensivas importantes se ven forzadas a ejecutarse cuando vos lo condicionas. Ya no deciden ellos. Decidís vos. La jugada nace de tu respiración, y si falla, es porque lo permitiste.
+
+Ejecución:
+Debes hacer referencia a Control del Marionetista y a la habilidad de tu aliado. Cooldown: 8 turnos globales.
+
+Tiro con Curvatura de Exterior
+
+No es un disparo común. Es una anomalía diseñada. Golpeas el balón con el exterior del pie, no por capricho, sino por instinto refinado. El contacto no sigue la lógica tradicional. La curva es tardía y engañosa.
+Los sensores de meta visión fallan porque no se puede predecir algo que decidís en el último cuarto de segundo. El cuerpo no revela nada. El pie no anticipa el resultado. Lo que lanzás es una contradicción física con intención letal.
+
+Cuando ejecutas este tiro obtienes +25% en Tiro inmediato. La precisión no disminuye incluso desde ángulos abiertos. El balón parece doblarse por voluntad propia. Si un rival intenta interceptarlo su Defensa se reduce en 25%. Esta habilidad no puede ser leída por Meta Visión avanzada a menos que ya haya sido vista antes por ese jugador.
+
+Ejecución:
+Debes hacer referencia a Tiro con Curvatura de Exterior y haber generado la ocasión de gol. Cooldown de 6 turnos propios.
+
+Regate con Finta × Conciencia Espacial
+
+Tu cuerpo no se mueve más rápido que el ojo, pero sí más rápido que la mente. Ejecutas una finta sutil, medida, casi imperceptible. Una pausa que no es pausa. Un paso cancelado al hacerlo. El rival reacciona cuando ya es tarde.
+
+Cuando activas, fuerzas un enfrentamiento directo entre tu Regate y la Defensa rival. Tu Regate aumenta +25% y su Defensa se reduce -25%.
+Si ganas atravesás su línea como si no estuviera. Si pierdes, el rival queda desestabilizado un turno, reduciendo su siguiente acción defensiva en -10%.
+
+Ejecución:
+Debes hacer referencia a Regate con Finta × Conciencia Espacial y a la secuencia activa. Cooldown de 5 turnos propios.
+
+Movimiento especial en estado de flujo
+Destrucción frontal
+
+Un sentimiento familiar pero desconocido te inunda. Pierdes la lógica y destruyes con brutalidad. Al usar esta habilidad confrontas al rival usando su mejor estadística contra él, reduciendo 28% su estadística total excepto jugadores New Gen Eleven. Si ganas, sumas +12 en Físico y Regate de forma permanente en el partido.
+
+Ejecución:
+Debes nombrar el tipo de enfrentamiento y cómo lo superas, luego hacer referencia a la habilidad.
+
+Destrucción del centro de gravedad
+
+Eres destrucción pura. Obligas un enfrentamiento físico mientras tienes el balón sin necesidad de ruleta. Si lo ganas, el rival sufre -6 en Físico todo el partido excepto New Gen Eleven. Cooldown: 3 turnos.
+
+Ejecución:
+Debes describir el choque físico y el uso de la habilidad. Cooldown de 5 turnos.
+
+Como detalle extra, al entrar en flujo pierdes acceso a Control del Marionetista hasta recuperarte.</p>
+    </div>
+  </div>
+
+<script>
+  // Cuando termina la animación de carga, se oculta
+  setTimeout(()=>{
+    document.getElementById("loader").classList.add("hide");
+  },4000);
+</script>
+
+</body>
+</html>
